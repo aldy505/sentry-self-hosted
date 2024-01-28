@@ -11,11 +11,10 @@ get_volumes() {
 
 expected_volumes="sentry-clickhouse
 sentry-data
-sentry-kafka
+sentry-redpanda
 sentry-postgres
 sentry-redis
-sentry-symbolicator
-sentry-zookeeper"
+sentry-symbolicator"
 
 before=$(get_volumes)
 
