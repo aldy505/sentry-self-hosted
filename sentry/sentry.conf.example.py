@@ -322,6 +322,18 @@ SENTRY_FEATURES.update(
             "organizations:feedback-ingest",
             "organizations:feedback-post-process-group",
         )
+        # Uptime Monitoring related flags
+        + (
+            "organizations:uptime-api-create-update",
+            "organizations:uptime-automatic-hostname-detection",
+            "organizations:uptime-automatic-subscription-creation",
+            "organizations:uptime-rule-api",
+            "organizations:uptime-create-issues",
+            "organizations:uptime-settings",
+            "organizations:uptime-visible", # This is for issues platform (much magic)
+            "organizations:uptime-ingest",
+            "organizations:uptime-post-process-group",
+        )
     }
 )
 

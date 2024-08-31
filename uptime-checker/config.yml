@@ -1,0 +1,17 @@
+# see https://github.com/getsentry/uptime-checker/blob/8ffa29b89b319e4b8e51154e82569796ea74c3af/src/app/config.rs
+# you could technically use environment variable instead of this file, if you prefer, but I think it's better to use this instead.
+# if you really want to use environment variables, do something like: UPTIME_CHECKER_SENTRY_DSN UPTIME_CHECKER_REDIS_HOST, you know the rest.
+
+# sentry_dsn: <string, optional>
+# sentry_env: <string, optional>
+log_level: error
+log_format: auto
+
+checker_concurrency: 200
+
+results_kafka_cluster: "kafka:9092"
+results_kafka_topic: "uptime-results"
+configs_kafka_cluster: "kafka:9092"
+configs_kafka_topic: "uptime-configs"
+
+redis_host: "redis://redis:6379"

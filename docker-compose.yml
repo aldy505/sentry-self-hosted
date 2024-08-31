@@ -440,6 +440,11 @@ services:
     command: run consumer generic-metrics-subscription-results --consumer-group query-subscription-consumer
     profiles:
       - feature-complete
+  uptime-results:
+    <<: *sentry_defaults
+    command: run consumer uptime-results --consumer-group uptime-results
+    profiles:
+      - feature-complete
   sentry-cleanup:
     <<: *sentry_defaults
     image: sentry-cleanup-self-hosted-local
@@ -512,6 +517,22 @@ services:
     command: '"0 0 * * * find /var/lib/sentry-profiles -type f -mtime +$SENTRY_EVENT_RETENTION_DAYS -delete"'
     volumes:
       - sentry-vroom:/var/lib/sentry-profiles
+    profiles:
+      - feature-complete
+  uptime-checker:
+    <<: *restart_policy
+    build: ./uptime-checker
+    command: run --config /config.yml
+    volumes:
+      - type: bind
+        read_only: true
+        source: ./uptime-checker/config.yml
+        target: /config.yml
+    depends_on:
+      kafka:
+        <<: *depends_on-healthy
+      redis:
+        <<: *depends_on-healthy
     profiles:
       - feature-complete
 
