@@ -521,7 +521,7 @@ services:
       - feature-complete
   uptime-checker:
     <<: *restart_policy
-    build: ./uptime-checker
+    build: ./uptime-checker-git
     command: run --config /config.yml
     volumes:
       - type: bind
